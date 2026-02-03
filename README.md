@@ -32,57 +32,55 @@
 
 ### users（ユーザー）
 
-- id : bigint / 主キー  
-- name : string / ユーザーの表示名  
-- email : string / ログイン認証用メールアドレス（ユニーク制約）  
-- encrypted_password : string / 暗号化されたパスワード  
-- created_at : datetime / 作成日時  
-- updated_at : datetime / 更新日時  
+- id : 主キー（例：1）  
+- name : ユーザーの表示名（例：山田 太郎）  
+- email : ログイン認証用メールアドレス（ユニーク制約）（例：taro@example.com）  
+- encrypted_password : 暗号化されたパスワード（例：$2a$12$XXXXXXXXXXXXXXXX）  
+- created_at : 作成日時（例：2026-01-10 12:00:00）  
+- updated_at : 更新日時（例：2026-01-12 09:30:00）  
 
 ---
 
 ### posts（感謝投稿）
 
-- id : bigint / 主キー  
-- user_id : bigint / 投稿者のユーザーID（外部キー）  
-- title : string / 感謝投稿のタイトル  
-- body : text / 感謝内容の本文  
-- is_public : boolean / 公開・非公開フラグ  
-- status : string / 投稿状態（draft / published）  
-- created_at : datetime / 作成日時  
-- updated_at : datetime / 更新日時  
-
-※ 画像はActiveStorageを使用し、複数枚添付可能としています。
+- id : 主キー（例：10）  
+- user_id : 投稿者のユーザーID（外部キー）（例：1）  
+- title : 感謝投稿のタイトル（例：今日も無事に仕事を終えられたこと）  
+- body : 感謝内容の本文（例：忙しかったけど、同僚が助けてくれて感謝した）  
+- is_public : 公開・非公開フラグ（例：true）  
+- status : 投稿状態（draft / published）（例：published）  
+- created_at : 作成日時（例：2026-01-15 20:45:00）  
+- updated_at : 更新日時（例：2026-01-15 21:00:00）  
 
 ---
 
 ### comments（コメント）
 
-- id : bigint / 主キー  
-- user_id : bigint / コメント投稿者のユーザーID（外部キー）  
-- post_id : bigint / 紐づく感謝投稿ID（外部キー）  
-- body : text / コメント本文  
-- created_at : datetime / 作成日時  
-- updated_at : datetime / 更新日時  
+- id : 主キー（例：5）  
+- user_id : コメント投稿者のユーザーID（外部キー）（例：2）  
+- post_id : 紐づく感謝投稿ID（外部キー）（例：10）  
+- body : コメント本文（例：とても素敵な考え方ですね）  
+- created_at : 作成日時（例：2026-01-16 08:10:00）  
+- updated_at : 更新日時（例：2026-01-16 08:20:00）  
 
 ---
 
 ### tags（タグ）
 
-- id : bigint / 主キー  
-- name : string / タグ名  
-- created_at : datetime / 作成日時  
-- updated_at : datetime / 更新日時  
+- id : 主キー（例：3）  
+- name : タグ名（例：仕事）  
+- created_at : 作成日時（例：2026-01-14 18:00:00）  
+- updated_at : 更新日時（例：2026-01-14 18:00:00）  
 
 ---
 
 ### post_tags（中間テーブル）
 
-- id : bigint / 主キー  
-- post_id : bigint / 感謝投稿ID（外部キー）  
-- tag_id : bigint / タグID（外部キー）  
-- created_at : datetime / 作成日時  
-- updated_at : datetime / 更新日時  
+- id : 主キー（例：7）  
+- post_id : 感謝投稿ID（外部キー）（例：10）  
+- tag_id : タグID（外部キー）（例：3）  
+- created_at : 作成日時（例：2026-01-15 20:50:00）  
+- updated_at : 更新日時（例：2026-01-15 20:50:00）   
 
 ---
 
