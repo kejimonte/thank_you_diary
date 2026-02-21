@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+body {
+  background:
+    linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
+    url("sky.jpg");
+  background-size: cover;
+  background-position: center;
+//  background-attachment: fixed;
+}
+
+.card {
+  background-color: rgba(255,255,255,0.92);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+}
+
+h2 {
+  color: #0d6efd;
+  font-weight: 700;
+}
+
+.navbar {
+  background-color: rgba(255,255,255,0.8) !important;
+  backdrop-filter: blur(6px);
+}
+
+.page-header {
+  display: inline-block;
+  background-color: rgba(255,255,255,0.9);
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.button-wrapper {
+  display: inline-block;
+  background-color: rgba(255,255,255,0.9);
+  padding: 15px 25px;
+  border-radius: 12px;
+}
+
+.glass-wrapper {
+  display: inline-block;
+  background-color: rgba(255,255,255,0.8);
+  backdrop-filter: blur(6px);
+  padding: 12px 20px;
+  border-radius: 14px;
+}
+
+.main-content {
+  background-color: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* ===== Deviseフォーム統一 ===== */
+
+.devise-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.devise-form .form-label {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.devise-form .form-control {
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.devise-form .form-control:focus {
+  border-color: #000;
+  box-shadow: none;
+}
+
+.devise-form .btn {
+  width: 100%;
+  margin-top: 15px;
+}
