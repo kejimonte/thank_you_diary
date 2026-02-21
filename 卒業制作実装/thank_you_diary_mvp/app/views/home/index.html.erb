@@ -1,0 +1,35 @@
+<div class="text-center mb-4">
+  <h2>みんなの感謝</h2>
+</div>
+
+<div class="row">
+  <% @thanks.each do |thank| %>
+    <div class="col-6 col-md-3 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <%= link_to thank_path(thank), class: "text-decoration-none text-dark" do %>
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <p class="card-text mb-2">
+                  <%= truncate(thank.content, length: 60) %>
+                </p>
+                <p class="text-muted small mb-0">
+                  投稿者: <%= thank.user.nickname.presence || "名無し" %>
+                </p>
+                <p class="text-muted small">
+                  <%= time_ago_label(thank.created_at) %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+  <div class="text-center mb-4">
+    <%= link_to "感謝作成", new_thank_path, class: "btn btn-primary px-4" %>
+  </div>
+<% end %>

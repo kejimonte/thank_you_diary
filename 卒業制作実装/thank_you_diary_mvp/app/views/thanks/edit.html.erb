@@ -1,0 +1,21 @@
+<h1>感謝を編集</h1>
+
+<% if @thank.errors.any? %>
+  <div style="color: red;">
+    <ul>
+      <% @thank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @thank do |f| %>
+  <div>
+    <%= f.text_area :content, rows: 5 %>
+  </div>
+  <div>
+    <%= f.submit "更新する" %>
+  </div>
+<% end %>
+
