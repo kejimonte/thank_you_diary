@@ -1,4 +1,7 @@
 ja:
+  errors:
+    messages:
+      not_saved: "はすでに登録されています"
   datetime:
     distance_in_words:
       less_than_x_minutes:
@@ -30,5 +33,4 @@ ja:
             content:
               blank: "を入力してください"
               too_long: "は200文字以内で入力してください"
-      messages:
-        not_saved: "はすでに登録されています"
+
