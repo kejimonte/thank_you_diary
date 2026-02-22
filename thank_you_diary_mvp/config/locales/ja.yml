@@ -17,6 +17,12 @@ ja:
         one: "1日"
         other: "%{count}日"
   activerecord:
+    errors:
+      messages:
+        taken: "はすでに存在します"
+      attributes:
+        user:
+          email: "メールアドレス"
     models:
       thank: 感謝投稿
     attributes:
