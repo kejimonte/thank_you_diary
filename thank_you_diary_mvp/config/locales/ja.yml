@@ -30,3 +30,9 @@ ja:
             content:
               blank: "を入力してください"
               too_long: "は200文字以内で入力してください"
+        user:
+          attributes:
+            email:
+              taken: "はすでに登録されています"
+            password_confirmation:
+              confirmation: "が一致しません"

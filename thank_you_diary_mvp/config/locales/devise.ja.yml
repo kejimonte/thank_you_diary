@@ -18,3 +18,7 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード確認"
         submit: "登録する"
+    failure:
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
