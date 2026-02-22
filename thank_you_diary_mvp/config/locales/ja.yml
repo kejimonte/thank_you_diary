@@ -31,8 +31,4 @@ ja:
               blank: "を入力してください"
               too_long: "は200文字以内で入力してください"
       messages:
-        not_saved:
-          one: "1件のエラーにより保存できませんでした"
-          other: "%{count}件のエラーにより保存できませんでした"
-        taken: "はすでに登録されています"
-        confirmation: "が一致しません"
+        not_saved: "はすでに登録されています"
