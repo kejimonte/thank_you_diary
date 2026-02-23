@@ -1,7 +1,4 @@
 ja:
-  errors:
-    messages:
-      not_saved: "はすでに登録されています"
   datetime:
     distance_in_words:
       less_than_x_minutes:
@@ -17,12 +14,6 @@ ja:
         one: "1日"
         other: "%{count}日"
   activerecord:
-    errors:
-      messages:
-        taken: "はすでに存在します"
-      attributes:
-        user:
-          email: "メールアドレス"
     models:
       thank: 感謝投稿
     attributes:
@@ -33,10 +24,16 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード（確認用）"
     errors:
+      messages:
+        not_saved: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。" # この行または同様の行が必要
+        taken: "は既に使用されています" # この行または同様の行が必要
+        # ... 他のメッセージも同様に設定
       models:
         thank:
           attributes:
             content:
               blank: "を入力してください"
               too_long: "は200文字以内で入力してください"
-
+  errors:
+    messages:
+      not_saved: "エラーが発生したため保存されませんでした。"
