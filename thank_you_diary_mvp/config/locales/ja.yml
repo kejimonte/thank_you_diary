@@ -28,6 +28,7 @@ ja:
         not_saved: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。" # この行または同様の行が必要
         taken: "は既に使用されています" # この行または同様の行が必要
         # ... 他のメッセージも同様に設定
+        confirmation: "と%{attribute}の入力が一致しません"
       models:
         thank:
           attributes:
