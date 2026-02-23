@@ -1,6 +1,10 @@
 ja:
   hello: "こんにちは"
   devise:
+    failure:
+      invalid: "メールアドレスまたはパスワードが違います。"
+      user:
+        invalid: "メールアドレスまたはパスワードが違います。"
     sessions:
       signed_in: "ログインしました"
       signed_out: "ログアウトしました"
