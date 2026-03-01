@@ -1,0 +1,26 @@
+<!-- app/views/thanks/show.html.erb -->
+
+<div class="text-center mb-4">
+  <h2>感謝詳細</h2>
+</div>
+
+<div class="container mt-4">
+  <!-- カード風表示 -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <!-- 投稿内容 -->
+      <p class="card-text"><%= @thank.content %></p>
+      <!-- 投稿者 -->
+      <h5 class="card-title"><%= @thank.user&.nickname.presence || "名無し" %></h5>
+      <!-- 投稿日時 -->
+      <p class="text-muted small">
+        <%= time_ago_label(@thank.created_at) %>
+      </p>
+    </div>
+  </div>
+
+  <!-- 一覧に戻るボタン -->
+  <div class="text-center mb-4">
+    <%= link_to "タイムラインに戻る", root_path, class: "btn btn-outline-primary" %>
+  </div>
+</div>

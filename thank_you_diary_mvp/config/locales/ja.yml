@@ -1,0 +1,40 @@
+ja:
+  datetime:
+    distance_in_words:
+      less_than_x_minutes:
+        one: "1分未満"
+        other: "1分未満"
+      x_minutes:
+        one: "1分"
+        other: "%{count}分"
+      about_x_hours:
+        one: "約1時間"
+        other: "約%{count}時間"
+      x_days:
+        one: "1日"
+        other: "%{count}日"
+  activerecord:
+    models:
+      thank: 感謝投稿
+    attributes:
+      thank:
+        content: 内容
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+    errors:
+      messages:
+        not_saved: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。" # この行または同様の行が必要
+        taken: "は既に使用されています" # この行または同様の行が必要
+        # ... 他のメッセージも同様に設定
+        confirmation: "と%{attribute}の入力が一致しません"
+      models:
+        thank:
+          attributes:
+            content:
+              blank: "を入力してください"
+              too_long: "は200文字以内で入力してください"
+  errors:
+    messages:
+      not_saved: "エラーが発生したため保存されませんでした。"
