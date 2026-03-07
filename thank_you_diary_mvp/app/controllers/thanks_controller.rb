@@ -1,7 +1,6 @@
 class ThanksController < ApplicationController
-
-  before_action :set_thank, only: [:edit, :update, :destroy, :show]
-  before_action :authenticate_user!, except: [:show]
+  before_action :set_thank, only: [ :edit, :update, :destroy, :show ]
+  before_action :authenticate_user!, except: [ :show ]
 
   def index
     @thanks = current_user.thanks.order(created_at: :desc)
@@ -38,6 +37,15 @@ end
 
 def show
   @thank = Thank.find(params[:id])
+    set_meta_tags(
+    title: @thank.content,
+    description: @thank.content.truncate(100),
+    og: {
+      title: @thank.content,
+      description: @thank.content.truncate(100),
+      image: view_context.image_url("ogp.png")
+    }
+  )
 end
 
   private
@@ -49,5 +57,4 @@ end
   def set_thank
     @thank = Thank.find(params[:id])
   end
-
 end
