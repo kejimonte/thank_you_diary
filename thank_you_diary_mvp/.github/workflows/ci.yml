@@ -20,7 +20,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: thank_you_diary_mvp/.ruby-version
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Scan for common Rails security vulnerabilities using static analysis
@@ -36,7 +36,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: thank_you_diary_mvp/.ruby-version
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
@@ -52,7 +52,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: thank_you_diary_mvp/.ruby-version
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Lint code for consistent style
@@ -71,7 +71,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: thank_you_diary_mvp/.ruby-version
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Setup DB
