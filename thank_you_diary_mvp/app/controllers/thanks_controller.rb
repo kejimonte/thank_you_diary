@@ -43,7 +43,9 @@ def show
     og: {
       title: @thank.content,
       description: @thank.content.truncate(100),
-      image: view_context.image_url("ogp.png")
+      image: view_context.image_url("ogp.png"),
+      image_width: 1200,
+      image_height: 630
     }
   )
 end
