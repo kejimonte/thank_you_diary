@@ -5,83 +5,80 @@ on:
   push:
     branches: [ main ]
 
-defaults:
-  run:
-    working-directory: thank_you_diary_mvp
-
 jobs:
   scan_ruby:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-          bundler-cache: true
+          working-directory: thank_you_diary_mvp
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+      - run: bundle install
+        working-directory: thank_you_diary_mvp
+
+      - run: bin/brakeman --no-pager
+        working-directory: thank_you_diary_mvp
 
   scan_js:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-          bundler-cache: true
 
-      - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
+      - run: bundle install
+        working-directory: thank_you_diary_mvp
+
+      - run: bin/importmap audit
+        working-directory: thank_you_diary_mvp
 
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-          bundler-cache: true
 
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
+      - run: bundle install
+        working-directory: thank_you_diary_mvp
+
+      - run: bin/rubocop -f github
+        working-directory: thank_you_diary_mvp
 
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips sqlite3
+      - uses: actions/checkout@v4
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-          bundler-cache: true
 
-      - name: Setup DB
+      - run: bundle install
+        working-directory: thank_you_diary_mvp
+
+      - run: bin/rails db:create
+        working-directory: thank_you_diary_mvp
         env:
           RAILS_ENV: test
-        run: |
-          bin/rails db:create
-          bin/rails db:migrate
 
-      - name: Run RSpec
+      - run: bin/rails db:migrate
+        working-directory: thank_you_diary_mvp
         env:
           RAILS_ENV: test
-        run: bundle exec rspec
+
+      - run: bundle exec rspec
+        working-directory: thank_you_diary_mvp
+        env:
+          RAILS_ENV: test
