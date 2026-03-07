@@ -37,6 +37,15 @@ end
 
 def show
   @thank = Thank.find(params[:id])
+    set_meta_tags(
+    title: @thank.content,
+    description: @thank.content.truncate(100),
+    og: {
+      title: @thank.content,
+      description: @thank.content.truncate(100),
+      image: view_context.image_url("ogp.png")
+    }
+  )
 end
 
   private
