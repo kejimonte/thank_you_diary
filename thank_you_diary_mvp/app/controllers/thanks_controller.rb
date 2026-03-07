@@ -1,7 +1,6 @@
 class ThanksController < ApplicationController
-
-  before_action :set_thank, only: [:edit, :update, :destroy, :show]
-  before_action :authenticate_user!, except: [:show]
+  before_action :set_thank, only: [ :edit, :update, :destroy, :show ]
+  before_action :authenticate_user!, except: [ :show ]
 
   def index
     @thanks = current_user.thanks.order(created_at: :desc)
@@ -49,5 +48,4 @@ end
   def set_thank
     @thank = Thank.find(params[:id])
   end
-
 end

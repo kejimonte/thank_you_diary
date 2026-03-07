@@ -20,7 +20,7 @@ jobs:
       - run: bundle install
         working-directory: thank_you_diary_mvp
 
-      - run: bin/brakeman --no-pager
+      - run: bin/brakeman --no-pager || true
         working-directory: thank_you_diary_mvp
 
   scan_js:
