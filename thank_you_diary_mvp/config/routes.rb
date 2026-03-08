@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  get "pages/terms"
+  get "pages/privacy"
   get "thanks/index"
   get "thanks/new"
   get "thanks/create"
   get "home/index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  get "terms", to: "pages#terms"
+  get "privacy", to: "pages#privacy"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
