@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get "thanks/new"
   get "thanks/create"
   get "home/index"
-  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "terms", to: "pages#terms"
   get "privacy", to: "pages#privacy"
@@ -21,6 +20,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # root "home#index"
+  devise_for :users, controllers:
+  {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 
   root "home#index"
   resources :thanks

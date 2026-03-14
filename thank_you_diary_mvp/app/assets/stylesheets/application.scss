@@ -106,3 +106,29 @@ footer {
   text-align: center;
   border-top: 1px solid #ddd;
 }
+
+.login-container{
+  display:flex;
+  justify-content:center;  /* 横中央 */
+  align-items:center;      /* 縦中央 */
+  margin-top:30px;
+  flex-direction:column;   /* 要素を縦並び */
+}
+
+.google-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  background:white;
+  border:1px solid #dadce0;
+  border-radius:6px;
+
+  padding:12px 20px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.google-icon{
+  width:20px;
+}
