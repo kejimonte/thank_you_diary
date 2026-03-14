@@ -24,9 +24,16 @@
 
     <%= f.submit "ログイン", class: "btn btn-primary w-100 mt-3" %>
 
+
   <% end %>
 </div>
 
+<div class="login-container">
+  <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: false}, class: "google-btn" do %>
+  <%= image_tag "google_logo.svg", class: "google-icon" %>
+    Googleでログイン
+  <% end %>
+</div>
 <div class="text-center mt-3">
   <%= render "devise/shared/links" %>
 </div>

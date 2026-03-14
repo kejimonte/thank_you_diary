@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Thank You Diary Mvp" %></title>
+    <title><%= content_for(:title) || "Thank You Diary" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all"%>
     <%= javascript_importmap_tags %>
     <%= display_meta_tags %>
   </head>
 
-  <body>
-
+  <body class="d-flex flex-column min-vh-100">
     <!-- Bootstrap Navbar -->
     <nav class="navbar navbar-light bg-light">
       <div class="container d-flex justify-content-between">
@@ -48,14 +47,17 @@
     </div>
 
     <!-- Main -->
-    <div class="main-content container my-5 py-4">
-      <%= yield %>
-    </div>
+    <main class="flex-grow-1">
+      <div class="main-content container my-5 py-4">
+        <%= yield %>
+      </div>
+    </main>
 
-    <footer class="text-center mt-5 mb-3 text-muted">
-     <p>© 2026 Thank You Diary</p>
-     <%= link_to "利用規約", terms_path %> |
-     <%= link_to "プライバシーポリシー", privacy_path %>
+    <!-- Footer -->
+    <footer class="text-center py-3 border-top text-muted">
+      <p class="mb-1">© 2026 Thank You Diary</p>
+      <%= link_to "利用規約", terms_path %> |
+      <%= link_to "プライバシーポリシー", privacy_path %>
     </footer>
   </body>
 </html>
