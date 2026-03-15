@@ -24,3 +24,7 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード確認"
         submit: "登録する"
+    omniauth_callbacks:
+      failure: "Googleログインに失敗しました。もう一度お試しください。"
+      user:
+        failure: "Googleログインに失敗しました。もう一度お試しください。"
