@@ -29,9 +29,9 @@
 </div>
 
 <div class="login-container">
-  <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: false}, class: "google-btn" do %>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: false}, class: "google-btn" do %>
   <%= image_tag "google_logo.svg", class: "google-icon" %>
-    Googleでログイン
+    <span>Googleでログイン</span>
   <% end %>
 </div>
 <div class="text-center mt-3">
