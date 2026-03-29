@@ -2,21 +2,18 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-document.addEventListener("turbo:load", () => {
+const init = () => {
   const btn = document.getElementById("ai-btn");
-
   if (!btn) return;
 
   btn.addEventListener("click", async () => {
     const content = document.getElementById("content_field").value;
 
-    // 空入力ガード
     if (!content) {
       alert("内容を入力してください");
       return;
     }
 
-    // ボタン無効化
     btn.disabled = true;
     btn.innerText = "生成中...";
 
@@ -31,15 +28,16 @@ document.addEventListener("turbo:load", () => {
       });
 
       const data = await res.json();
-
       document.getElementById("content_field").value = data.text;
 
     } catch (e) {
       alert("AI生成に失敗しました");
     }
 
-    // 元に戻す
     btn.disabled = false;
     btn.innerText = "AIで整える";
   });
-});
+};
+
+document.addEventListener("turbo:load", init);
+document.addEventListener("DOMContentLoaded", init);
