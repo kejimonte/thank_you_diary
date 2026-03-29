@@ -9,21 +9,42 @@
   <div class="row text-center">
 
     <div class="col-md-4 mb-3">
-      <h5>① 感謝を書く</h5>
-      <p class="text-muted">日常の小さな感謝を投稿</p>
+      <h5>① 感謝を投稿する</h5>
+      <p class="text-muted">
+        日常の中で感じた「ありがとう」を気軽に投稿してみよう。<br>
+        画像やタグもつけて記録できます。
+      </p>
     </div>
 
     <div class="col-md-4 mb-3">
-      <h5>② 振り返る</h5>
-      <p class="text-muted">過去の投稿を見返す</p>
+      <h5>② みんなの感謝を見る</h5>
+      <p class="text-muted">
+        他の人の投稿を見ることで、新しい気づきや温かい気持ちを感じられます。<br>
+        タグや検索で探すこともできます。
+      </p>
     </div>
 
     <div class="col-md-4 mb-3">
-      <h5>③ ポジティブ習慣</h5>
-      <p class="text-muted">感謝を習慣化する</p>
+      <h5>③ 振り返って習慣化</h5>
+      <p class="text-muted">
+        自分の投稿を振り返ることで、日常の中の小さな幸せに気づけるようになります。
+      </p>
     </div>
 
   </div>
+</div>
+
+<div class="container mb-4">
+  <%= form_with url: thanks_path, method: :get, local: true do |f| %>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.text_field :keyword, placeholder: "キーワード検索", class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.submit "検索", class: "btn btn-primary w-100" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="text-center mb-4">
@@ -32,30 +53,47 @@
 
 <div class="row">
   <% @thanks.each do |thank| %>
-    <div class="col-6 col-md-3 mb-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <%= link_to thank_path(thank), class: "text-decoration-none text-dark" do %>
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <p class="card-text mb-2">
-                  <%= truncate(thank.content, length: 60) %>
-                </p>
-                <p class="text-muted small mb-0">
-                  投稿者: <%= thank.user.nickname.presence || "名無し" %>
-                </p>
-                <p class="text-muted small">
-                  <%= time_ago_label(thank.created_at) %>
-                </p>
-              </div>
-            </div>
-          <% end %>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+
+      <%= link_to thank_path(thank), class: "text-decoration-none text-dark d-block" do %>
+        <div class="card shadow-sm h-100">
+
+          <div class="card-body">
+
+            <!-- 本文 -->
+            <p class="card-text mb-2">
+              <%= truncate(thank.content, length: 50) %>
+            </p>
+
+            <!-- 画像 -->
+            <% if thank.image.attached? %>
+              <%= image_tag thank.image, class: "img-fluid mb-2", style: "height: 150px; object-fit: cover; width: 100%;" %>
+            <% end %>
+
+            <!-- タグ -->
+            <p>
+              <% thank.tags.each do |tag| %>
+                <span class="badge bg-secondary me-1 mb-1">#<%= tag.name %></span>
+              <% end %>
+            </p>
+
+            <!-- 投稿者 -->
+            <p class="text-muted small mb-0">
+              投稿者: <%= thank.user.nickname.presence || "名無し" %>
+            </p>
+
+            <!-- 時間 -->
+            <p class="text-muted small">
+              <%= time_ago_label(thank.created_at) %>
+            </p>
+
+          </div>
         </div>
-      </div>
+      <% end %>
+
     </div>
   <% end %>
 </div>
-
 <% if user_signed_in? %>
   <div class="text-center mb-4">
     <%= link_to "感謝作成", new_thank_path, class: "btn btn-primary px-4" %>

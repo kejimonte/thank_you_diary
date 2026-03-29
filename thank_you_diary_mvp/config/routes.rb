@@ -26,5 +26,13 @@ Rails.application.routes.draw do
   }
 
   root "home#index"
-  resources :thanks
+  resources :thanks do
+    resources :comments, only: [ :create ]
+  end
+
+  resources :thanks do
+    collection do
+      post :ai_generate
+    end
+  end
 end

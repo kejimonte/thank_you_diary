@@ -168,7 +168,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
@@ -310,6 +310,9 @@ Devise.setup do |config|
   config.responder.redirect_status = :see_other
   config.omniauth :google_oauth2,
   ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+
+  config.omniauth :line,
+  ENV["LINE_CHANNEL_ID"], ENV["LINE_CHANNEL_SECRET"], scope: "profile openid"
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is

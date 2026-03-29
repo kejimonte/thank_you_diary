@@ -5,21 +5,69 @@
 </div>
 
 <div class="container mt-4">
-  <!-- カード風表示 -->
+  <!-- 投稿カード -->
   <div class="card shadow-sm mb-4">
     <div class="card-body">
-      <!-- 投稿内容 -->
       <p class="card-text"><%= @thank.content %></p>
-      <!-- 投稿者 -->
-      <h5 class="card-title"><%= @thank.user&.nickname.presence || "名無し" %></h5>
-      <!-- 投稿日時 -->
+      <% if @thank.image.attached? %>
+        <%= image_tag @thank.image, class: "img-fluid" %>
+      <% end %>
+      <p>
+        <% @thank.tags.each do |tag| %>
+          <span class="badge bg-secondary">#<%= tag.name %></span>
+        <% end %>
+      </p>
+
+      <h5 class="card-title">
+        <%= @thank.user&.nickname.presence || "名無し" %>
+      </h5>
+
       <p class="text-muted small">
         <%= time_ago_label(@thank.created_at) %>
       </p>
     </div>
   </div>
 
-  <!-- 一覧に戻るボタン -->
+  <!-- コメント一覧 -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5>コメント一覧</h5>
+
+      <% @thank.comments.each do |comment| %>
+        <p>
+          <strong><%= comment.user&.nickname.presence || "名無し" %></strong>
+          <br>
+          <%= comment.content %>
+        </p>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- コメント投稿 -->
+  <% if user_signed_in? %>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5>コメントする</h5>
+
+        <%= form_with(model: [@thank, Comment.new]) do |f| %>
+          <div class="mb-2">
+            <%= f.text_area :content, class: "form-control" %>
+          </div>
+          <%= f.submit "コメントする", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p>
+      コメントするには
+      <%= link_to "ログイン", new_user_session_path %>
+      が必要です
+    </p>
+  <% end %>
+
+
+  <!-- 戻る -->
   <div class="text-center mb-4">
     <%= link_to "タイムラインに戻る", root_path, class: "btn btn-outline-primary" %>
   </div>
