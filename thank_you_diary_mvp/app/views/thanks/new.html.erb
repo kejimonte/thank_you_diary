@@ -16,16 +16,31 @@
     <%= form_with model: @thank, local: true do |f| %>
 
       <div class="mb-3">
-        <%= f.label :content, "感謝内容", class: "form-label" %>
+        <%= f.label :content, "感謝内容" %>
         <%= f.text_area :content,
+              id: "content_field",
               class: "form-control",
               rows: 4,
-              placeholder: "今日のありがとうを書いてみよう" %>
+              placeholder: "感謝を共有しよう！" %>
+      </div>
+
+      <button type="button" id="ai-btn" class="btn btn-secondary mb-3">
+        AIで整える
+      </button>
+
+
+      <div class="mb-3">
+        <%= f.label :image, "画像" %>
+        <%= f.file_field :image, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= f.label :tag_names, "タグ（カンマ区切り）" %>
+        <%= text_field_tag :tag_names %>
       </div>
 
       <%= f.submit "投稿する", class: "btn btn-primary" %>
 
     <% end %>
-
   </div>
 </div>

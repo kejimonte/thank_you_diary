@@ -15,6 +15,15 @@
     <%= f.text_area :content, rows: 5 %>
   </div>
   <div>
+    <%= f.label :image, "画像" %>
+    <%= f.file_field :image %>
+  </div>
+  <div>
+    <%= f.label :tag_names, "タグ（カンマ区切り）" %>
+    <%= text_field_tag :tag_names %>
+  </div>
+
+  <div>
     <%= f.submit "更新する" %>
   </div>
 <% end %>

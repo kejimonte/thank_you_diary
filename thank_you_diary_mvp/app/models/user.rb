@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   has_many :thanks, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,  :omniauthable, omniauth_providers: [ :google_oauth2 ]
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,  :omniauthable, omniauth_providers: [ :google_oauth2, :line ]
 
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
