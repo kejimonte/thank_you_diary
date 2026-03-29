@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   root "home#index"
   resources :thanks do
-    resources :comments, only: [:create]
+    resources :comments, only: [ :create ]
   end
 
   resources :thanks do

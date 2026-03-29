@@ -312,7 +312,7 @@ Devise.setup do |config|
   ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
 
   config.omniauth :line,
-  ENV['LINE_CHANNEL_ID'], ENV['LINE_CHANNEL_SECRET'], scope: 'profile openid'
+  ENV["LINE_CHANNEL_ID"], ENV["LINE_CHANNEL_SECRET"], scope: "profile openid"
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [ :index ]
 
   def create
     @thank = Thank.find(params[:thank_id])
