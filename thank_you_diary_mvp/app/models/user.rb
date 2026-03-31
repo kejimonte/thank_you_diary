@@ -6,15 +6,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,  :omniauthable, omniauth_providers: [ :google_oauth2, :line ]
 
   def self.from_omniauth(auth)
-    user = User.find_by(email: auth.info.email)
+    user = User.find_by(provider: auth.provider, uid: auth.uid)
 
-    if user
-      user.update(provider: auth.provider, uid: auth.uid)
-    else
+    unless user
       user = User.create(
         provider: auth.provider,
         uid: auth.uid,
-        email: auth.info.email,
+        email: auth.info.email || "#{auth.uid}@example.com",
         password: Devise.friendly_token[0, 20]
       )
     end
