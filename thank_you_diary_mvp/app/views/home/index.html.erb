@@ -67,11 +67,9 @@
         <div class="card-body">
 
           <!-- 本文クリック -->
-          <%= link_to thank_path(thank), class: "text-decoration-none text-dark" do %>
-            <p class="card-text mb-2">
-              <%= truncate(thank.content, length: 50) %>
-            </p>
-          <% end %>
+          <p class="card-text mb-2">
+            <%= truncate(thank.content, length: 50) %>
+          </p>
 
           <!-- 画像 -->
           <% if thank.image.attached? %>
