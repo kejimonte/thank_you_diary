@@ -62,7 +62,7 @@
   <% @thanks.each do |thank| %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
 
-      <div class="card shadow-sm h-100">
+      <div class="card shadow-sm h-100 clickable-card" data-url="<%= thank_path(thank) %>">
 
         <div class="card-body">
 
