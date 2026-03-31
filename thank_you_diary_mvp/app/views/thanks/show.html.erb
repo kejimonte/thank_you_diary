@@ -13,13 +13,14 @@
         <%= image_tag @thank.image, class: "img-fluid" %>
       <% end %>
       <p>
-        <% thank.tags.each do |tag| %>
+        <% @thank.tags.each do |tag| %>
           <%= link_to thanks_path(tag: tag.name),
               class: "badge bg-secondary me-1 mb-1 text-decoration-none" do %>
             #<%= tag.name %>
           <% end %>
         <% end %>
       </p>
+
       <h5 class="card-title">
         <%= @thank.user&.nickname.presence || "名無し" %>
       </h5>
