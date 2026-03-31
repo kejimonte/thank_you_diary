@@ -77,3 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
   googleLoginInit();
   cardClickInit();
 });
+
+document.addEventListener("turbo:visit", () => {
+  const loading = document.getElementById("loading");
+  if (loading) loading.style.display = "flex";
+});
+
+document.addEventListener("turbo:load", () => {
+  const loading = document.getElementById("loading");
+  if (loading) loading.style.display = "none";
+});
