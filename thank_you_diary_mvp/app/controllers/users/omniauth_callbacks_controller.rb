@@ -11,6 +11,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def line
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    sign_in_and_redirect @user, notice: "LINEログイン成功！"
+
+    if @user.persisted?
+      sign_in_and_redirect @user
+      flash[:notice] = "LINEでログインしました"
+    else
+      redirect_to new_user_session_path,
+        alert: "LINEログインに失敗しました"
+    end
   end
 end
