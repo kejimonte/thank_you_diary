@@ -1,7 +1,7 @@
 class ThanksController < ApplicationController
   before_action :set_thank, only: [ :show ]
   before_action :set_own_thank, only: [ :edit, :update, :destroy ]
-  before_action :authenticate_user!, except: [ :show ]
+  before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
     @thanks = Thank.includes(:tags)

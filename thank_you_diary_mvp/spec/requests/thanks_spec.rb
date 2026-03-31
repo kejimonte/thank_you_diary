@@ -13,9 +13,9 @@ RSpec.describe "Thanks", type: :request do
     end
 
     context "when not logged in" do
-      it "redirects to login page" do
+      it "returns http success for guests" do
         get thanks_path
-        expect(response).to redirect_to(new_user_session_path)
+        expect(response).to have_http_status(:success)
       end
     end
   end
