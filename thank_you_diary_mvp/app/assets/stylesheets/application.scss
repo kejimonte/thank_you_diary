@@ -108,13 +108,13 @@ footer {
 }
 
 
-.login-container {
-  display: flex;
-  flex-direction: column;
+.login-container{
+  display:flex;
+  justify-content:center;  /* 横中央 */
+  align-items:center;      /* 縦中央 */
+  margin-top:30px;
+  flex-direction:column;   /* 要素を縦並び */
   gap: 10px;
-
-  max-width: 300px;   /* ← これ追加 */
-  margin: 0 auto;     /* ← 中央寄せ */
 }
 
 
