@@ -62,42 +62,44 @@
   <% @thanks.each do |thank| %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
 
-      <%= link_to thank_path(thank), class: "text-decoration-none text-dark d-block" do %>
-        <div class="card shadow-sm h-100">
+      <div class="card shadow-sm h-100">
 
-          <div class="card-body">
+        <div class="card-body">
 
-            <!-- 本文 -->
+          <!-- 本文クリック -->
+          <%= link_to thank_path(thank), class: "text-decoration-none text-dark" do %>
             <p class="card-text mb-2">
               <%= truncate(thank.content, length: 50) %>
             </p>
+          <% end %>
 
-            <!-- 画像 -->
-            <% if thank.image.attached? %>
-              <%= image_tag thank.image, class: "img-fluid mb-2", style: "height: 150px; object-fit: cover; width: 100%;" %>
-            <% end %>
+          <!-- 画像 -->
+          <% if thank.image.attached? %>
+            <%= image_tag thank.image, class: "img-fluid mb-2", style: "height: 150px; object-fit: cover; width: 100%;" %>
+          <% end %>
 
-            <!-- タグ -->
-            <p>
+          <!-- タグ -->
+          <p>
+            <% thank.tags.each do |tag| %>
               <%= link_to thanks_path(tag: tag.name),
                   class: "badge bg-secondary me-1 mb-1 text-decoration-none" do %>
                 #<%= tag.name %>
               <% end %>
-            </p>
+            <% end %>
+          </p>
 
-            <!-- 投稿者 -->
-            <p class="text-muted small mb-0">
-              投稿者: <%= thank.user.nickname.presence || "名無し" %>
-            </p>
+          <!-- 投稿者 -->
+          <p class="text-muted small mb-0">
+            投稿者: <%= thank.user.nickname.presence || "名無し" %>
+          </p>
 
-            <!-- 時間 -->
-            <p class="text-muted small">
-              <%= time_ago_label(thank.created_at) %>
-            </p>
+          <!-- 時間 -->
+          <p class="text-muted small">
+            <%= time_ago_label(thank.created_at) %>
+          </p>
 
-          </div>
         </div>
-      <% end %>
+      </div>
 
     </div>
   <% end %>
