@@ -39,5 +39,22 @@ const init = () => {
   });
 };
 
+const googleLoginInit = () => {
+  const btn = document.getElementById("google-login-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", (e) => {
+    const ua = navigator.userAgent.toLowerCase();
+
+    if (ua.includes("line")) {
+      e.preventDefault();
+      alert("LINE内ブラウザではGoogleログインできません。\nSafariかChromeで開いてください。");
+    }
+  });
+};
+
 document.addEventListener("turbo:load", init);
 document.addEventListener("DOMContentLoaded", init);
+
+document.addEventListener("turbo:load", googleLoginInit);
+document.addEventListener("DOMContentLoaded", googleLoginInit);
