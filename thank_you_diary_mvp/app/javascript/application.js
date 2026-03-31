@@ -53,8 +53,27 @@ const googleLoginInit = () => {
   });
 };
 
-document.addEventListener("turbo:load", init);
-document.addEventListener("DOMContentLoaded", init);
+const cardClickInit = () => {
+  const cards = document.querySelectorAll(".clickable-card");
 
-document.addEventListener("turbo:load", googleLoginInit);
-document.addEventListener("DOMContentLoaded", googleLoginInit);
+  cards.forEach(card => {
+    card.addEventListener("click", (e) => {
+      // タグやリンクをクリックしたときは無視
+      if (e.target.closest("a")) return;
+
+      window.location.href = card.dataset.url;
+    });
+  });
+};
+
+document.addEventListener("turbo:load", () => {
+  init();
+  googleLoginInit();
+  cardClickInit();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+  googleLoginInit();
+  cardClickInit();
+});
