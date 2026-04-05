@@ -20,6 +20,10 @@ class ThanksController < ApplicationController
       @thanks = tag ? @thanks.joins(:tags).where(tags: { id: tag.id }) : Thank.none
     end
 
+    if user_signed_in?
+      @thanks_count = current_user.thanks.count
+    end
+
     @thanks = @thanks.order(created_at: :desc)
   end
 
