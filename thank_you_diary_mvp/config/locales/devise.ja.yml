@@ -5,6 +5,8 @@ ja:
       invalid: "メールアドレスまたはパスワードが違います。"
       user:
         invalid: "メールアドレスまたはパスワードが違います。"
+        not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
     sessions:
       signed_in: "ログインしました"
       signed_out: "ログアウトしました"

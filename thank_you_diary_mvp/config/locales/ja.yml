@@ -43,4 +43,5 @@ ja:
               too_long: "は200文字以内で入力してください"
   errors:
     messages:
+      blank: "を入力してください"
       not_saved: "エラーが発生したため保存されませんでした。"
