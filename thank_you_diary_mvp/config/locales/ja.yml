@@ -16,7 +16,13 @@ ja:
       about_x_months:
         one: "1ヶ月"
         other: "%{count}ヶ月"
+      x_months:
+        one: "1ヶ月"
+        other: "%{count}ヶ月"
       about_x_years:
+        one: "1年"
+        other: "%{count}年"
+      x_years:
         one: "1年"
         other: "%{count}年"
   activerecord:
